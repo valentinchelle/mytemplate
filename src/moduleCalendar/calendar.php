@@ -12,7 +12,7 @@ include('src/moduleCalendar/functioncalendar.php');
 		<div class="col-md-6 col-md-offset-3 inscriptionBloc" >
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">Modal Header</h4>
+				<h4 class="modal-title"></h4>
 			</div>        
 			
 		<form id="formcalendar" class="form-horizontal" day="" month="" year="" method = "POST" action = "" enctype="multipart/form-data">
@@ -71,17 +71,24 @@ include('src/moduleCalendar/functioncalendar.php');
 		for($list_day = 1; $list_day <= $days_in_month; $list_day++):
 			$calendar.= '<td day="'.$list_day.'" month="'.$month.'" year="'.$year.'" class="calendar-day">';
 				/* add in the day number */
-				$calendar.= '<p>';
+				
 				$calendar.= '<div class="day-number">'.$list_day.'.  </div>';
 				
 				/** QUERY THE DATABASE FOR AN ENTRY FOR THIS DAY !!  IF MATCHES FOUND, PRINT THEM !! **/
 				
-				if ($infomois[$list_day-1] == "none"){
+				if ($infomois[$list_day-1] == "none" or $infomois[$list_day-1][1] == ""){// on a pas de contenu
+					$calendar.='<div class="dayempty">';
+					$calendar.='<span class="glyphicon glyphicon-plus openmodifmodal" aria-hidden="true"></span>';
+					$calendar.='</div>';
 					
 				}else{
 					$calendar.='<span class="'.$infomois[$list_day-1][0].'">'.$infomois[$list_day-1][1].'</span>';
+					$calendar.='<div class="iconcalendar">';
+					$calendar.='<span class="glyphicon glyphicon-pencil openmodifmodal" aria-hidden="true"></span>';
+					$calendar.='<span class="glyphicon glyphicon-remove deleteday" aria-hidden="true"></span>';
+					$calendar.='</div>';
 				}
-				$calendar.= '</p>';
+			
 				
 			$calendar.= '</td>';
 			if($days_in_this_week== 7): // si on est dimanche on fini la week

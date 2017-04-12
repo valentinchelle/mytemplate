@@ -1,8 +1,37 @@
-$('td.calendar-day').click(function(){
+$('.openmodifmodal').click(function(){
+	var parentinfo = $(this).closest('.calendar-day'); //on remonte pour avoir les infos du jour.
+
 	$('#calendaraddevent').modal();
-	$('form#formcalendar').attr('day', $(this).attr('day'));
-	$('form#formcalendar').attr('month', $(this).attr('month'));
-	$('form#formcalendar').attr("year", $(this).attr('year'));
+	//on change les attributs :
+	$('form#formcalendar').attr('day', parentinfo.attr('day'));
+	$('form#formcalendar').attr('month', parentinfo.attr('month'));
+	$('form#formcalendar').attr("year", parentinfo.attr('year'));
+	//on change le titre :
+	
+	$('h4.modal-title').html(parentinfo.attr('day') + '/' + parentinfo.attr('month') + '/' + parentinfo.attr('year'));
+	// on change le contenu du form en utilisant celui qu'il y a dans le span de l'enfant.
+	var content = parentinfo.children('span').text();
+	
+	$('#formcalendar textarea').text(content).html();
+});
+
+$('.deleteday').click(function(){
+	var $this = $(this).closest('.calendar-day'); // on remonte pour avoir les infos du mois.
+
+	$.ajax({
+			url: '',
+			type: 'POST',
+			data: "req=deletecal&day=" + $this.attr("day") + "&month=" + $this.attr("month") + "&year=" + $this.attr("year") + "&hour=0" ,
+			success: function(json) {
+				
+					 
+
+				
+			}
+		});
+	
+	
+	
 });
 
 	

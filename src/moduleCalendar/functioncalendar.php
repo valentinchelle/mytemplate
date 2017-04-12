@@ -1,4 +1,5 @@
 <?php
+
 function recup_month($month, $year){
 	$bdd = db_connexion();
 	$sql = $bdd -> prepare("SELECT * FROM calendar WHERE month = ? AND year = ?");
@@ -23,14 +24,23 @@ function recup_month($month, $year){
 }
 
 // dans le cas ou l'user a rentré un content pour un jour (l'appel sera ajaxé)
-if(isset($_POST['req']) and $_POST['req'] == "updatecal" and isset($_POST['content']) and isset($_POST['year']) and isset($_POST['month']) and isset($_POST['day'])){
-	echo'ae';
+if(isset($_POST['req']) and $_POST['req'] == "updatecal" and isset($_POST['content']) and isset($_POST['year']) and isset($_POST['month']) and isset($_POST['day'])  and isset($_POST['hour'])){
 	$bdd = db_connexion();
 	// pas encore sécurisé, overide possible du content des jours
 	$sql = $bdd->prepare("INSERT INTO calendar(day, month, year, hour, content, class) VALUES (?,?,?,?,?, ?)");
 	$sql -> execute(array(htmlspecialchars($_POST['day']),htmlspecialchars($_POST['month']),htmlspecialchars($_POST['year']),htmlspecialchars($_POST['hour']),htmlspecialchars($_POST['content']), 'lol'));
-	$sql -> CloseCursor();
 	
+	$sql -> CloseCursor();
+	$rep = "ok";
+	echo json_encode($rep);
 }
-				  
+
+if(isset($_POST['req']) and $_POST['req'] == "deletecal" and isset($_POST['year']) and isset($_POST['month']) and isset($_POST['day']) and isset($_POST['hour'])){
+	$bdd = db_connexion();
+	$sql = $bdd->prepare("DELETE FROM calendar WHERE day = ? AND month = ? AND year = ? AND hour = ?");
+	$sql -> execute(array(htmlspecialchars($_POST['day']),htmlspecialchars($_POST['month']),htmlspecialchars($_POST['year']),htmlspecialchars($_POST['hour'])));
+	$sql -> CloseCursor();
+	$rep= "ok";
+	echo json_encode($rep);
+}
 ?>

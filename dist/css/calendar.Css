@@ -1,23 +1,81 @@
 
 :root{
-    --color-fond-clair:#fff;
-	--colorbackground :#ecf0f1;
+    
 	--main-color:#7f8c8d;
 	--main-color-hover:#6e7879;
 	--color-secondaire-claire:#d0d0d0;
+	
 }
 
 
 
 
-/* calendar */
+/* calendar cases et général*/
 table.calendar		{ border-left:1px solid #999; width:100%; height:85vh; border-collapse:inherit;}
 tr.calendar-row	{ background-color:#fff;  }
-td.calendar-day	{ cursor: pointer;min-height:80px; font-size:15px; line-height: 20px; position:relative;  height : 15%;  border: 1px  solid var(--color-secondaire-claire);} * html div.calendar-day {  height : 15%; }
+td.calendar-day	{color:var(--main-color); min-height:80px; font-size:15px; line-height: 20px; position:relative;  height : 15%;  border: 1px  solid var(--color-secondaire-claire);} * html div.calendar-day {  height : 15%; }
+
 td.calendar-day:hover	{ background:#fcfcfc; }
 td.calendar-day-np	{ background:var(--main-color); height : 15%; position:relative;   } * html div.calendar-day-np {  height : 15%; }
 td.calendar-day-head { background:var(--main-color); border-bottom: 3px solid #95a5a6; color:#fff;height : 5%;   text-align:center; width:120px; padding:5px; }
 div.day-number		{   color:var(--color-secondaire-claire); font-weight:bold; float:left; width:20px;  }
+/* icons calendar*/
+td.calendar-day .iconcalendar{
+	
+	position: absolute; 
+	bottom: 0;
+	right:0;
+	padding-right:5px;
+	padding-bottom:5px;
+	font-size:1.4em;
+	
+}
+td.calendar-day .iconcalendar span{
+	border-radius:50%;
+	height:1.8em;
+	width:1.8em;
+	margin-right:5px;
+	text-align:center;
+	line-height:1.8em;
+	opacity:0.5;
+}
+td.calendar-day .iconcalendar span:hover{
+	border-radius:50%;
+	background-color:var(--colorbackground);
+	opacity:1;
+	cursor:pointer;
+	
+}
+td.calendar-day .iconcalendar .glyphicon-remove:hover{
+	color:var(--color-error);
+}
+.dayempty{
+	
+     width:100%;
+	 height:1.4em;
+	margin-top:-0.7em;
+	position: absolute;
+    left: 0;
+    top: 50%;
+    
+    text-align: center;
+}
+.dayempty span{
+	
+	width:1.8em;
+	height:1.8em;
+	line-height:1.8em;
+	
+	border-radius:50%;
+	opacity:0.2;
+
+}
+
+.dayempty span:hover{
+	background-color:var(--colorbackground);
+	opacity:1;
+	cursor:pointer;
+}
 /* shared */
 
 td.calendar-day, td.calendar-day-np {  vertical-align: top; width:14%; padding:5px;  }
@@ -26,12 +84,9 @@ button.close{background:#323232; border-radius: 50%; color:var(--colorbackground
 button.close:hover{color:#fff;opacity:1;}
 .modal-header{background-color:var(--main-color); color:#fff;}
 .modal-header .close{margin-top:0px;}
-/* bouton calendrier */
+/* bouton calendrier modal*/
 .calendarchangebutton{border: 1px solid var(--main-color); border-radius: 25px;   background: linear-gradient(90deg, var(--main-color) 25%, #fff 25%);  color:var(--main-color);}
 .calendarchangebutton span{float:left; color:var(--colorbackground )}
 .calendarchangebutton:hover{color:var(--main-color-hover); background: linear-gradient(90deg, var(--main-color-hover) 25%, #fff 25%);}
 .calendarchangebutton span:hover{float:left; color:#fff;}
 
-.calendarchangebutton[appui="true"]{
-	
-}

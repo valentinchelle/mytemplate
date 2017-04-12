@@ -133,9 +133,7 @@ box-shadow: 0px 6px 10px -10px rgba(189,195,199,0.79);
 .dropdown:hover .dropdown-menu{
 display:block;
 }
-.dropdown-menu:hover{
-	padding-top:10px;
-}
+
 .menuheader .navbar-nav li li a{
 	
 	
@@ -191,7 +189,12 @@ display:block;
 	
 	border-bottom:2px solid var(--color-secondaire);
   }
-
+ 
+.navbar-default .navbar-nav li a:focus{
+	color: #000;
+	
+	border-bottom:2px solid var(--color-secondaire);
+  }
 .navbar-default .navbar-nav li a{
 	font-size: 14px;
 
