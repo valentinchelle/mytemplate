@@ -1,0 +1,37 @@
+
+:root{
+    --color-fond-clair:#fff;
+	--colorbackground :#ecf0f1;
+	--main-color:#7f8c8d;
+	--main-color-hover:#6e7879;
+	--color-secondaire-claire:#d0d0d0;
+}
+
+
+
+
+/* calendar */
+table.calendar		{ border-left:1px solid #999; width:100%; height:85vh; border-collapse:inherit;}
+tr.calendar-row	{ background-color:#fff;  }
+td.calendar-day	{ cursor: pointer;min-height:80px; font-size:15px; line-height: 20px; position:relative;  height : 15%;  border: 1px  solid var(--color-secondaire-claire);} * html div.calendar-day {  height : 15%; }
+td.calendar-day:hover	{ background:#fcfcfc; }
+td.calendar-day-np	{ background:var(--main-color); height : 15%; position:relative;   } * html div.calendar-day-np {  height : 15%; }
+td.calendar-day-head { background:var(--main-color); border-bottom: 3px solid #95a5a6; color:#fff;height : 5%;   text-align:center; width:120px; padding:5px; }
+div.day-number		{   color:var(--color-secondaire-claire); font-weight:bold; float:left; width:20px;  }
+/* shared */
+
+td.calendar-day, td.calendar-day-np {  vertical-align: top; width:14%; padding:5px;  }
+
+button.close{background:#323232; border-radius: 50%; color:var(--colorbackground); opacity : 0.5; width : 20px; height: 20px;margin-top:0px;font-size: 14px; }
+button.close:hover{color:#fff;opacity:1;}
+.modal-header{background-color:var(--main-color); color:#fff;}
+.modal-header .close{margin-top:0px;}
+/* bouton calendrier */
+.calendarchangebutton{border: 1px solid var(--main-color); border-radius: 25px;   background: linear-gradient(90deg, var(--main-color) 25%, #fff 25%);  color:var(--main-color);}
+.calendarchangebutton span{float:left; color:var(--colorbackground )}
+.calendarchangebutton:hover{color:var(--main-color-hover); background: linear-gradient(90deg, var(--main-color-hover) 25%, #fff 25%);}
+.calendarchangebutton span:hover{float:left; color:#fff;}
+
+.calendarchangebutton[appui="true"]{
+	
+}

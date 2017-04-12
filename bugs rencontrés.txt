@@ -1,0 +1,1 @@
+pour l'upload d'iamge, il faut CHMOD 777  pour le répertoire concerné.
